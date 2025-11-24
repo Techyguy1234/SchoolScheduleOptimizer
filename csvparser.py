@@ -12,18 +12,15 @@ for row in readcsv:
 
 
 # create array of each individual schedule
-studentSchedules=[[0]]
-
+studentSchedules=[[]]
 iteration=0
-
 currentSchedule=0
 currentScheduleSize=10
-
 lastPeriod=[]
-
 readcsv = csv.reader(open("Student_Schedules - Student_Schedules.csv"))
 for row in readcsv:
     if iteration!=0:
+        # loop through each schedule of 10 and add 1 if 2 sem class
         if row[5]=='SEM1':
             currentScheduleSize+=1
         if currentScheduleSize == 0:
@@ -38,9 +35,5 @@ for row in readcsv:
         else:
             studentSchedules[currentSchedule].append(row)
         currentScheduleSize-=1
-
     iteration+=1
 studentSchedules[currentSchedule].append(lastPeriod)
-
-print(len(studentSchedules))
-print(studentSchedules[137])
