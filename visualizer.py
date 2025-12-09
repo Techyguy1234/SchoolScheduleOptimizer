@@ -1,2 +1,10 @@
 def visualize():
-    pass
+    gLib.draw_map(test_schedule(studentSchedules,1,'SEM2'))
+    gLib.draw_map(test_schedule(studentSchedules,2,'SEM2'))
+    gLib.draw_map(test_schedule(studentSchedules,3,'SEM2'))
+    gLib.draw_map(test_schedule(studentSchedules,4,'SEM2'))
+    gLib.draw_map(test_schedule(studentSchedules,5,'SEM2'))
+    gLib.draw_map(test_schedule(studentSchedules,6,'SEM2'))
+    gLib.draw_map(test_schedule(studentSchedules,7,'SEM2'))
+    gLib.draw_map(test_schedule(studentSchedules,8,'SEM2'))
+    gLib.draw_map(test_schedule(studentSchedules,9,'SEM2'))
