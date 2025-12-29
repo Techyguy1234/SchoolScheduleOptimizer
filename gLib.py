@@ -37,7 +37,7 @@ print_canvas()
 
 def draw_map(segmentsinput):
     #segments = [" 0 "," 1 "," 2 "," 3 "," 4 "," 5 "," 6 "," 7 "," 8 "," 9 "," 10"," 11"]
-    segments=["","","","","","","","","","","",""]
+    segments=["   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   ","   "]
     for key, value in segmentsinput.items():
         value2 = "   "
         if len(str(value)) == 1:
