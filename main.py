@@ -27,7 +27,6 @@ def test_schedule(schedules,period,notSemester):
                 if not segmentusage.__contains__(a):
                     segmentusage[a]=0
                 segmentusage[a]+=1
-    print(segmentusage)
     return segmentusage
 
 def avg_from_schedule_period(segmentsinput):
@@ -91,16 +90,16 @@ def test_full_schedule(schedules,notSemester):
 #    t=time.time()*1000
 #    print(time.time()*1000-t)
 
-gLib.draw_map(test_schedule(studentSchedules,1,'SEM2'))
-gLib.draw_map(test_schedule(studentSchedules,2,'SEM2'))
-gLib.draw_map(test_schedule(studentSchedules,3,'SEM2'))
-gLib.draw_map(test_schedule(studentSchedules,4,'SEM2'))
-gLib.draw_map(test_schedule(studentSchedules,5,'SEM2'))
-gLib.draw_map(test_schedule(studentSchedules,6,'SEM2'))
-gLib.draw_map(test_schedule(studentSchedules,7,'SEM2'))
-gLib.draw_map(test_schedule(studentSchedules,8,'SEM2'))
-gLib.draw_map(test_schedule(studentSchedules,9,'SEM2'))
-
-
+#gLib.draw_map(test_schedule(studentSchedules,1,'SEM2'))
+#gLib.draw_map(test_schedule(studentSchedules,2,'SEM2'))
+#gLib.draw_map(test_schedule(studentSchedules,3,'SEM2'))
+#gLib.draw_map(test_schedule(studentSchedules,4,'SEM2'))
+#gLib.draw_map(test_schedule(studentSchedules,5,'SEM2'))
+#gLib.draw_map(test_schedule(studentSchedules,6,'SEM2'))
+#gLib.draw_map(test_schedule(studentSchedules,7,'SEM2'))
+#gLib.draw_map(test_schedule(studentSchedules,8,'SEM2'))
+#gLib.draw_map(test_schedule(studentSchedules,9,'SEM2'))
 
 print(test_full_schedule(studentSchedules,'SEM2'))
+
+
