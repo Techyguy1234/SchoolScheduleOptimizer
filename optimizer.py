@@ -26,8 +26,9 @@ def run_optimizer_loop(schedules:list):
         swapSchedule1[editingSchedule][swapPeriod1], swapSchedule1[editingSchedule][i] =  swapSchedule1[editingSchedule][i], swapSchedule1[editingSchedule][swapPeriod1]
         if main.test_full_schedule(swapSchedule1,'SEM2') < currentBest:
             currentBest = swapSchedule1
+            noOptimazitionFound = False
     print("New current best is %s, starting was 39.62037037037037, the improvement is %s" % (main.test_full_schedule(currentBest,'SEM2'),39.62037037037037/(39.62037037037037-main.test_full_schedule(currentBest,'SEM2'))))
 
 while True:
     run_optimizer_loop(currentBest)
-#print(classlist)
+#print(classlist)s
