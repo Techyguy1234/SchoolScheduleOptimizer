@@ -1,5 +1,6 @@
 import main
 import random
+import copy
 
 classlist = main.classlist
 studentSchedules = main.studentSchedules
@@ -33,14 +34,14 @@ def run_optimizer_loop(schedules:list):
             swapClass2=selectedSchedule[swapClass2Index]
 
             if swapClass2==swapClass1:
-                print("same class, skipping")
+                pass#print("same class, skipping")
             else:
                 if classlist[swapClass2[1]][2].__contains__(swapClass1[2]):
                     print("found possible swap between period "+str(swapClass1Index+1)+" and "+str(swapClass2Index+1))
 
-                    swapSchedule=schedules
-                    swapSchedule[selectedScheduleIndex][swapClass1Index]=swapClass2
-                    swapSchedule[selectedScheduleIndex][swapClass2Index]=swapClass1
+                    swapSchedule = copy.deepcopy(schedules)
+                    swapSchedule[selectedScheduleIndex][swapClass1Index] = swapClass2
+                    swapSchedule[selectedScheduleIndex][swapClass2Index] = swapClass1
                     swapResult=main.test_full_schedule(swapSchedule, 'SEM2')
                     print("current best: "+str(currentBest)+" | swap result: "+str(swapResult))
                     if swapResult<currentBest:
