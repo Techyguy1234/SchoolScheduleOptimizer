@@ -1,6 +1,7 @@
 import main
 import random
 import copy
+import math
 
 classlist = main.classlist
 studentSchedules = main.studentSchedules
@@ -8,11 +9,20 @@ studentSchedules = main.studentSchedules
 currentBest = main.test_full_schedule(studentSchedules, 'SEM2')
 currentBestSchedule = studentSchedules
 
+iteration_count = 0
+temperature = 1.0  # For simulated annealing
 
 
 def run_optimizer_loop(schedules:list):
     global currentBest
     global currentBestSchedule
+    global iteration_count
+    global temperature
+
+    iteration_count += 1
+    
+    # Simulated annealing: gradually cool down acceptance probability
+    temperature = max(0.1, 1.0 - (iteration_count / 10000.0))
 
     noOptimizationFound = True
     while noOptimizationFound:
@@ -43,14 +53,26 @@ def run_optimizer_loop(schedules:list):
                     swapSchedule[selectedScheduleIndex][swapClass1Index] = swapClass2
                     swapSchedule[selectedScheduleIndex][swapClass2Index] = swapClass1
                     swapResult=main.test_full_schedule(swapSchedule, 'SEM2')
-                    print("current best: "+str(currentBest)+" | swap result: "+str(swapResult))
-                    if swapResult<currentBest:
+                    print("current best: "+str(currentBest)+" | swap result: "+str(swapResult)+" | temp: "+str(round(temperature, 3)))
+                    
+                    # Accept if better, OR accept worse swap with probability (simulated annealing)
+                    if swapResult < currentBest:
                         print("found optimization! new best: "+str(swapResult))
                         currentBest=swapResult
                         schedules=swapSchedule
                         currentBestSchedule=swapSchedule
                         noOptimizationFound=False
                         return swapSchedule
+                    elif temperature > 0.1:  # Still exploring
+                        # Accept worse solution with decreasing probability
+                        delta = swapResult - currentBest
+                        acceptance_prob = math.exp(-delta / (currentBest * temperature))
+                        if random.random() < acceptance_prob:
+                            print(f"accepting worse swap (prob: {round(acceptance_prob, 3)}) - exploring...")
+                            schedules=swapSchedule
+                            currentBestSchedule=swapSchedule
+                            noOptimizationFound=False
+                            return swapSchedule
 
 
 
