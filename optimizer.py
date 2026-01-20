@@ -1,6 +1,8 @@
 import main
 import random
 import copy
+from save import save_schedules
+
 
 classlist = main.classlist
 studentSchedules = main.studentSchedules
@@ -73,7 +75,10 @@ def run_optimizer_loop(schedules:list):
                     currentBestSchedule=swapSchedule
                     iterations_without_improvement = 0
                     found_improvement = True
+                    save_schedules(currentBestSchedule)
                     return swapSchedule
+
+                
     
     # If we get here, no improvement was found in this iteration
     if not found_improvement:
