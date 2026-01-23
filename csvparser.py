@@ -2,7 +2,8 @@ import csv
 import sys
 
 # writes class list in format 'Course Name': ['Term', 'Location', ['Period'], 'Teacher']
-readcsv = csv.reader(open("Student_Schedules - Student_Schedules.csv"))
+#readcsv = csv.reader(open("Student_Schedules - Student_Schedules.csv"))
+readcsv = csv.reader(open("optimized_schedule.csv"))
 classList={}
 for row in readcsv:
     if not classList.__contains__(row[1]):
@@ -18,6 +19,7 @@ currentSchedule=0
 currentScheduleSize=10
 lastPeriod=[]
 readcsv = csv.reader(open("Student_Schedules - Student_Schedules.csv"))
+#readcsv = csv.reader(open("optimized_schedule.csv"))
 for row in readcsv:
     if iteration!=0:
         # loop through each schedule of 10 and add 1 if 2 sem class
